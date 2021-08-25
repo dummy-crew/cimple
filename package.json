@@ -1,5 +1,5 @@
 {
-  "name": "cimple",
+  "name": "@dummy-crew/cimple",
   "version": "1.0.0",
   "description": "Make it simple to create JavaScript apps",
   "main": "lib/index.js",
@@ -39,6 +39,9 @@
     "url": "https://github.com/dummy-crew/cimple/issues"
   },
   "homepage": "https://github.com/dummy-crew/cimple#readme",
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
+  },
   "devDependencies": {
     "@types/inquirer": "7.3.3",
     "prettier": "2.3.2",
