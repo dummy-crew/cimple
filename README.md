@@ -1,4 +1,10 @@
 # cimple
 Make it simple to create JavaScript apps 
 
-Just works with npx
+## Usage
+
+```bash
+cca my-app --use nuxt
+cca my-app --use next
+cca my-app -u rect
+```	

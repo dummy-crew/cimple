@@ -1,0 +1,55 @@
+{
+  "name": "cimple",
+  "version": "1.0.0",
+  "description": "Make it simple to create JavaScript apps",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "bin/",
+    "lib/**/*"
+  ],
+  "bin": {
+    "@dummy-crew/create-app": "bin/create-app",
+    "cca": "bin/create-app"
+  },
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dummy-crew/cimple.git"
+  },
+  "keywords": [
+    "cimple",
+    "cli",
+    "create-app",
+    "zero-configuation",
+    "build-tools"
+  ],
+  "author": "reliut-g",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dummy-crew/cimple/issues"
+  },
+  "homepage": "https://github.com/dummy-crew/cimple#readme",
+  "devDependencies": {
+    "@types/inquirer": "7.3.3",
+    "prettier": "2.3.2",
+    "tslint": "6.1.3",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "4.3.5"
+  },
+  "dependencies": {
+    "arg": "5.0.1",
+    "chalk": "4.1.2",
+    "esm": "3.2.25",
+    "inquirer": "8.1.2"
+  }
+}
