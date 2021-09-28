@@ -1,8 +1,9 @@
+import { Options } from './types';
 import arg from 'arg';
 import inquirer from 'inquirer';
 import { downloadTemplate } from '.';
 
-function parseArgumentsIntoOptions(rawArgs: string[]) {
+function parseArgumentsIntoOptions(rawArgs: string[]): Options {
   const args = arg(
     {
       '--use': String,
@@ -17,7 +18,7 @@ function parseArgumentsIntoOptions(rawArgs: string[]) {
   return {
     skipPrompts: args['--yes'] || false,
     template: args['--use'] || args['-u'] || '',
-    name: args._[0],
+    name: args._[0] || 'my-app',
   };
 }
 

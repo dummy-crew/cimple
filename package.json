@@ -16,6 +16,7 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
+    "watch": "tsc --watch",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
@@ -40,7 +41,7 @@
   },
   "homepage": "https://github.com/dummy-crew/cimple#readme",
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@types/inquirer": "7.3.3",
@@ -53,6 +54,7 @@
     "arg": "5.0.1",
     "chalk": "4.1.2",
     "esm": "3.2.25",
+    "execa": "^5.1.1",
     "inquirer": "8.1.2"
   }
 }

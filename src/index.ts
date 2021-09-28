@@ -1,13 +1,13 @@
+import { Options } from './types';
+import path from 'path';
 import chalk from 'chalk';
+import execa from 'execa';
 
-interface Options {
-  template: string;
-  name: string;
-  skipPrompts: boolean;
-}
+const KILL_PROCESS_ON = 5000;
+const cwd = process.cwd();
 
 async function downloadTemplate(options: Options) {
-  console.log(chalk.green('Downloading template...'));
+  console.log(chalk.green(`Downloading ${options.template} template...`));
   const COMMANDS: object | any = {
     nuxt: 'create-nuxt-app',
     next: 'create-next-app',
@@ -20,7 +20,23 @@ async function downloadTemplate(options: Options) {
     return;
   }
 
-  console.log(chalk.green(`Installing ${options.template}...`));
+  const { template, name } = options;
+  const root = path.join(cwd, name);
+  const subprocess = execa(`npx ${command}`, [root]);
+
+  setTimeout(() => {
+    subprocess.cancel();
+  }, KILL_PROCESS_ON);
+
+  try {
+    const { stdout } = await subprocess;
+    console.log(chalk.green(`Installing ${template}...`));
+    console.log(stdout);
+    console.log(chalk.green('Done!'));
+  } catch (error: any) {
+    console.log(subprocess.killed); // true
+    console.log(error.isCanceled); // true
+  }
 }
 
 export { downloadTemplate };
