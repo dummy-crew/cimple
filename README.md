@@ -1,6 +1,11 @@
 # cimple
 Make it simple to create JavaScript apps 
 
+## Install
+```bas
+npm install @dummy-crew/cimple
+```
+
 ## Usage
 
 ```bash
